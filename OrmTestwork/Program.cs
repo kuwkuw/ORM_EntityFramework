@@ -69,7 +69,7 @@ namespace OrmTestwork
 
                 Console.WriteLine("\nAverage mark by category");
                 cntx.TestWorks
-                    .GroupBy(tw=>tw.Test.TestCategory, (k, g)=>new { Category=k, AvgMark=g.Average(m=>m.Mark)})
+                    .GroupBy(tw=>tw.Test.TestCategory, (k, g)=>new { Category=k, AvgMark=g.Average(m=>m.Mark)}).OrderByDescending(m=>m.AvgMark)
                     .ToList().ForEach(gr=>Console.WriteLine("Group:{0} avg mark:{1}", gr.Category, gr.AvgMark));
             }
 
